@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Illustration of trees, sunshine and a campfire">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd98a"/><stop offset="0.55" stop-color="#ffb26b"/><stop offset="1" stop-color="#f7856a"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5e8c3a"/><stop offset="1" stop-color="#3f6b2a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff3b0" stop-opacity="0.95"/><stop offset="1" stop-color="#fff3b0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fireglow" cx="0.5" cy="0.6" r="0.5">
+      <stop offset="0" stop-color="#ffb347" stop-opacity="0.55"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- sky -->
+  <rect width="400" height="400" rx="16" fill="url(#sky)"/>
+
+  <!-- sun rays -->
+  <g transform="translate(300 105)" stroke="#fff1a8" stroke-width="6" stroke-linecap="round" opacity="0.8">
+    <line x1="0" y1="-78" x2="0" y2="-60"/><line x1="0" y1="60" x2="0" y2="78"/>
+    <line x1="-78" y1="0" x2="-60" y2="0"/><line x1="60" y1="0" x2="78" y2="0"/>
+    <line x1="-55" y1="-55" x2="-42" y2="-42"/><line x1="42" y1="42" x2="55" y2="55"/>
+    <line x1="55" y1="-55" x2="42" y2="-42"/><line x1="-42" y1="42" x2="-55" y2="55"/>
+  </g>
+  <circle cx="300" cy="105" r="80" fill="url(#glow)"/>
+  <circle cx="300" cy="105" r="40" fill="#ffe066"/>
+
+  <!-- distant hills -->
+  <path d="M0 250 Q 80 200 160 240 T 400 225 V 400 H 0 Z" fill="#7aa55a" opacity="0.7"/>
+
+  <!-- ground -->
+  <path d="M0 280 Q 200 255 400 285 V 400 H 0 Z" fill="url(#ground)"/>
+
+  <!-- trees -->
+  <g id="tree">
+    <rect x="-7" y="30" width="14" height="40" rx="3" fill="#6b4226"/>
+    <polygon points="0,-70 -42,10 42,10" fill="#2f6b3a"/>
+    <polygon points="0,-40 -34,30 34,30" fill="#3a8a48"/>
+  </g>
+  <use href="#tree" transform="translate(60 235) scale(1.1)"/>
+  <use href="#tree" transform="translate(120 250) scale(0.85)"/>
+  <use href="#tree" transform="translate(340 245) scale(0.95)"/>
+  <use href="#tree" transform="translate(385 260) scale(0.7)"/>
+
+  <!-- campfire -->
+  <ellipse cx="220" cy="345" rx="80" ry="40" fill="url(#fireglow)"/>
+  <g stroke="#5a3a1e" stroke-width="12" stroke-linecap="round">
+    <line x1="185" y1="352" x2="255" y2="335"/>
+    <line x1="185" y1="335" x2="255" y2="352"/>
+  </g>
+  <path d="M220 262 C 200 285 190 300 195 320 C 200 338 240 338 245 320 C 250 300 236 285 220 262 Z" fill="#ff7a1a"/>
+  <path d="M220 282 C 210 296 205 306 208 318 C 211 330 229 330 232 318 C 235 306 228 296 220 282 Z" fill="#ffc43a"/>
+  <path d="M220 298 C 215 305 213 311 215 317 C 217 324 224 324 225 317 C 227 311 224 305 220 298 Z" fill="#fff1a8"/>
+  <!-- sparks -->
+  <g fill="#ffd166">
+    <circle cx="205" cy="250" r="3"/><circle cx="238" cy="242" r="2.5"/><circle cx="228" cy="230" r="2"/>
+  </g>
+</svg>
