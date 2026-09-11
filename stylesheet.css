@@ -86,3 +86,25 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
   .dated li { grid-template-columns: 70px 1fr; }
   .top nav a { margin-left: 0; margin-right: 16px; }
 }
+
+/* visitors */
+.visitors { display: grid; grid-template-columns: 150px 1fr; gap: 32px; align-items: start; }
+.visitors .total { border-right: 1px solid var(--line); padding-right: 24px; }
+#v-map { margin-top: 18px; }
+#v-map img { max-width: 100%; }
+.visitors .total b { display: block; font-family: var(--serif); font-weight: 600; font-size: 38px; line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.visitors .total span { display: block; color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+.visitors .you { color: var(--muted); font-size: 13.5px; margin-top: 14px; }
+.geo { list-style: none; margin: 0; padding: 0; }
+.geo li { display: grid; grid-template-columns: 1fr 4em; gap: 12px; align-items: center; padding: 3px 0; font-size: 14.5px; }
+.geo .flag { font-size: 16px; line-height: 1; }
+.geo .name { position: relative; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.geo .bar { position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; background: var(--line); }
+.geo .bar i { display: block; height: 100%; background: var(--accent); opacity: .55; }
+.geo .n { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; font-size: 13.5px; }
+.visitors .more { color: var(--muted); font-size: 13px; margin-top: 10px; }
+.privacy { color: var(--muted); font-size: 12.5px; margin-top: 20px; }
+@media (max-width: 720px) {
+  .visitors { grid-template-columns: 1fr; gap: 20px; }
+  .visitors .total { border-right: 0; border-bottom: 1px solid var(--line); padding: 0 0 16px; }
+}

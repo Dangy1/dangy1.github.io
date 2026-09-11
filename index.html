@@ -6,7 +6,7 @@
   <meta name="author" content="Yongchao Dang">
   <meta name="description" content="Yongchao Dang, postdoctoral researcher at Aalto University. Agentic AI for O-RAN and 6G, cellular-connected UAVs and GPS spoofing detection, DECT-2020 NR, wireless TSN and physical layer security.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css?v=7">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css?v=11">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231d4ed8'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='36' font-weight='600' fill='white' text-anchor='middle'%3EY%3C/text%3E%3C/svg%3E">
 </head>
 <body>
@@ -212,12 +212,156 @@
   </div>
 </section>
 
+<section id="visitors" hidden>
+  <div class="wrap">
+    <h2>Visitors</h2>
+    <div class="visitors">
+      <div class="total">
+        <b id="v-total">—</b><span>page views</span>
+        <div class="you" id="v-you"></div>
+      </div>
+      <div>
+        <ul class="geo" id="v-geo"></ul>
+        <div class="more" id="v-more"></div>
+      </div>
+    </div>
+    <!-- Optional: a dotted world map of visitors. Sign up free at clustrmaps.com,
+         paste the id from your embed code into MAP_ID in the script below. -->
+    <div id="v-map"></div>
+    <p class="privacy" id="v-privacy"></p>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <span>© <span id="yr"></span> Yongchao Dang · Aalto University, Espoo, Finland</span>
     <span>Last updated September 2026</span>
   </div>
 </footer>
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- Visitors: page views by world region ----------
+   No account and no cookies. The visiting IP is resolved to a region at load
+   time and only a per-region tally is kept. Set MAP_ID to a ClustrMaps id to
+   also show a dotted world map.                                              */
+(function () {
+  var NS = 'dangy1-github-io';
+  var API = 'https://abacus.jasoncameron.dev';
+  var MAP_ID = '';                 /* <-- paste ClustrMaps id here to enable the map */
+
+  var SEC = document.getElementById('visitors');
+  var REGIONS = [
+    ['EU', 'Europe'], ['AS', 'Asia'], ['NA', 'North America'],
+    ['SA', 'South America'], ['AF', 'Africa'], ['OC', 'Oceania']
+  ];
+
+  function flag(cc) {
+    try {
+      return String.fromCodePoint.apply(null, String(cc).toUpperCase().split('')
+        .map(function (ch) { return 0x1F1E6 + ch.charCodeAt(0) - 65; }));
+    } catch (e) { return ''; }
+  }
+
+  function call(path) {
+    return fetch(API + path)
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { return (j && typeof j.value === 'number') ? j.value : 0; })
+      .catch(function () { return 0; });
+  }
+
+  /* run sequentially with a small gap: the counter API rejects bursts */
+  function queue(paths) {
+    var out = [];
+    return paths.reduce(function (chain, p, i) {
+      return chain.then(function () {
+        return new Promise(function (go) { setTimeout(go, i ? 120 : 0); })
+          .then(function () { return call(p).then(function (v) { out.push(v); }); });
+      });
+    }, Promise.resolve()).then(function () { return out; });
+  }
+
+  function render(counts, total, me) {
+    if (!total) return;
+    SEC.hidden = false;
+    document.getElementById('v-total').textContent = total.toLocaleString('en-US');
+
+    var seen = REGIONS.map(function (r, i) { return { label: r[1], n: counts[i] || 0 }; })
+                      .filter(function (r) { return r.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; });
+    var max = seen.length ? seen[0].n : 1;
+    document.getElementById('v-geo').innerHTML = seen.map(function (r) {
+      return '<li><span class="name">' + r.label +
+             '<span class="bar"><i style="width:' + Math.max(3, Math.round(r.n / max * 100)) + '%"></i></span></span>' +
+             '<span class="n">' + r.n.toLocaleString('en-US') + '</span></li>';
+    }).join('');
+    document.getElementById('v-more').textContent =
+      seen.length ? seen.length + (seen.length === 1 ? ' region' : ' regions') + ' so far' : '';
+    if (me) document.getElementById('v-you').textContent = 'You are visiting from ' + me + '.';
+
+    document.getElementById('v-privacy').textContent = MAP_ID
+      ? 'Visitor location comes from the visiting IP address. Counts are aggregate; the map is provided by ClustrMaps.'
+      : 'The visiting IP address is resolved to a world region at load time and only an aggregate tally is kept. No cookies, no personal data retained.';
+
+    if (MAP_ID) {
+      var sc = document.createElement('script');
+      sc.id = 'clustrmaps';
+      sc.src = 'https://clustrmaps.com/map_v2.js?d=' + MAP_ID + '&cl=ffffff&w=a';
+      document.getElementById('v-map').appendChild(sc);
+    }
+  }
+
+  var counted = false;
+  try { counted = sessionStorage.getItem('v-counted') === '1'; } catch (e) {}
+
+  /* GeoJS is a free, key-less service with open CORS; Cloudflare's trace
+     endpoint is a country-only fallback if it is ever unreachable. */
+  function locate() {
+    return fetch('https://get.geojs.io/v1/ip/geo.json')
+      .then(function (r) { return r.json(); })
+      .then(function (g) {
+        if (!g || !g.country_code) throw 0;
+        return { cc: g.country_code, country: g.country, city: g.city, region: g.continent_code };
+      })
+      .catch(function () {
+        return fetch('https://www.cloudflare.com/cdn-cgi/trace')
+          .then(function (r) { return r.text(); })
+          .then(function (t) {
+            var m = /(?:^|\n)loc=([A-Z]{2})/.exec(t);
+            if (!m) throw 0;
+            return { cc: m[1] };
+          })
+          .catch(function () { return {}; });
+      });
+  }
+
+  locate().then(function (g) {
+    var name = g.country || (g.cc ? (function () {
+      try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(g.cc); } catch (e) { return g.cc; }
+    })() : null);
+    var me = name ? ((g.city ? g.city + ', ' : '') + name + ' ' + flag(g.cc)) : null;
+    var here = g.region || null;
+    var mine = here ? REGIONS.map(function (r) { return r[0]; }).indexOf(here) : -1;
+
+    if (!counted) { try { sessionStorage.setItem('v-counted', '1'); } catch (e) {} }
+
+    if (mine > -1 && !counted) {
+      /* the increment response doubles as the fresh value, saving two reads */
+      queue(['/hit/' + NS + '/total', '/hit/' + NS + '/r-' + here].concat(
+        REGIONS.filter(function (_, i) { return i !== mine; })
+               .map(function (r) { return '/get/' + NS + '/r-' + r[0]; })
+      )).then(function (v) {
+        var counts = [], k = 2;
+        for (var i = 0; i < REGIONS.length; i++) counts[i] = (i === mine) ? v[1] : v[k++];
+        render(counts, v[0], me);
+      });
+    } else {
+      queue([(counted ? '/get/' : '/hit/') + NS + '/total'].concat(
+        REGIONS.map(function (r) { return '/get/' + NS + '/r-' + r[0]; })
+      )).then(function (v) { render(v.slice(1), v[0], me); });
+    }
+  });
+})();
+</script>
 </body>
 </html>
