@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+a { color: #1772d0; text-decoration: none; }
+a:focus, a:hover { color: #f09228; text-decoration: none; }
+
+body, td, th, tr, p, a {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 16px;
+}
+strong { font-family: 'Lato', Verdana, Helvetica, sans-serif; font-size: 16px; }
+heading { font-family: 'Lato', Verdana, Helvetica, sans-serif; font-size: 24px; }
+papertitle { font-family: 'Lato', Verdana, Helvetica, sans-serif; font-size: 16px; font-weight: 700; }
+name { font-family: 'Lato', Verdana, Helvetica, sans-serif; font-size: 36px; }
+
+.one { width: 160px; height: 160px; position: relative; }
+.one img { width: 160px; height: 160px; object-fit: cover; border-radius: 4px; }
+span.highlight { background-color: #ffffd0; }
+ul { padding-left: 1.2em; }
+li { margin-bottom: 4px; }
+summary { cursor: pointer; }
+
+@media (max-width: 600px) {
+  .bio-row td { display: block; width: 100% !important; box-sizing: border-box; }
+  .pub-row td { display: block; width: 100% !important; box-sizing: border-box; }
+  .pub-row td:first-child { padding-bottom: 0 !important; }
+}
