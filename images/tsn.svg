@@ -1,1 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160"><rect width="160" height="160" rx="8" fill="#6d597a"/><text x="80" y="78" font-family="Lato,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">Wireless TSN</text><text x="80" y="100" font-family="Lato,Helvetica,sans-serif" font-size="13" fill="#e8eef4" text-anchor="middle">Industry 5.0</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" font-family="Lato,Helvetica,sans-serif">
+  <rect width="480" height="360" fill="#fff"/>
+  <!-- RIC box -->
+  <rect x="140" y="24" width="200" height="60" rx="10" fill="#6d597a"/>
+  <text x="240" y="50" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">Open Radio Intelligent</text>
+  <text x="240" y="70" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">Controller (RIC)</text>
+  <!-- control arrows to APs -->
+  <path d="M200 84 L120 150" stroke="#6d597a" stroke-width="3" fill="none" marker-end="url(#a)"/>
+  <path d="M280 84 L360 150" stroke="#6d597a" stroke-width="3" fill="none" marker-end="url(#a)"/>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#6d597a"/></marker></defs>
+  <text x="240" y="130" font-size="12" fill="#6d597a" text-anchor="middle">TSN schedule / QoS mapping</text>
+  <!-- OpenWiFi APs -->
+  <g id="ap"><rect x="-45" y="0" width="90" height="34" rx="6" fill="#e9f0f8" stroke="#3b5b7f" stroke-width="3"/><line x1="-30" y1="0" x2="-38" y2="-22" stroke="#3b5b7f" stroke-width="3"/><line x1="30" y1="0" x2="38" y2="-22" stroke="#3b5b7f" stroke-width="3"/></g>
+  <use href="#ap" x="120" y="160"/><use href="#ap" x="360" y="160"/>
+  <text x="120" y="182" font-size="12" fill="#3b5b7f" text-anchor="middle">OpenWiFi AP</text>
+  <text x="360" y="182" font-size="12" fill="#3b5b7f" text-anchor="middle">OpenWiFi AP</text>
+  <!-- wireless links -->
+  <path d="M120 194 L120 260" stroke="#1772d0" stroke-width="3" stroke-dasharray="6 6"/>
+  <path d="M360 194 L360 260" stroke="#1772d0" stroke-width="3" stroke-dasharray="6 6"/>
+  <!-- robot arm & AGV -->
+  <rect x="80" y="262" width="80" height="50" rx="8" fill="#f4f4f4" stroke="#555" stroke-width="3"/>
+  <path d="M110 262 L110 232 L140 220" stroke="#555" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <text x="120" y="335" font-size="12" fill="#555" text-anchor="middle">robot</text>
+  <rect x="320" y="270" width="80" height="40" rx="8" fill="#f4f4f4" stroke="#555" stroke-width="3"/>
+  <circle cx="340" cy="312" r="8" fill="#555"/><circle cx="380" cy="312" r="8" fill="#555"/>
+  <text x="360" y="340" font-size="12" fill="#555" text-anchor="middle">AGV</text>
+  <!-- time slots -->
+  <g transform="translate(180 280)">
+    <rect x="0" y="0" width="24" height="18" fill="#2a9d8f"/><rect x="26" y="0" width="24" height="18" fill="#e9c46a"/><rect x="52" y="0" width="24" height="18" fill="#2a9d8f"/><rect x="78" y="0" width="24" height="18" fill="#e9c46a"/>
+    <text x="52" y="36" font-size="11" fill="#333" text-anchor="middle">deterministic time slots</text>
+  </g>
+</svg>

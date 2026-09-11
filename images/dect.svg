@@ -1,1 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160"><rect width="160" height="160" rx="8" fill="#e76f51"/><text x="80" y="78" font-family="Lato,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">DECT-2020 NR</text><text x="80" y="100" font-family="Lato,Helvetica,sans-serif" font-size="13" fill="#e8eef4" text-anchor="middle">+ Wi-Fi</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" font-family="Lato,Helvetica,sans-serif">
+  <rect width="480" height="360" fill="#fff"/>
+  <!-- device A -->
+  <rect x="40" y="120" width="90" height="150" rx="12" fill="#e9f0f8" stroke="#3b5b7f" stroke-width="3"/>
+  <rect x="55" y="140" width="60" height="95" rx="4" fill="#fff" stroke="#9fb3c8"/>
+  <circle cx="85" cy="252" r="7" fill="#9fb3c8"/>
+  <!-- device B (laptop) -->
+  <rect x="330" y="140" width="120" height="80" rx="6" fill="#e9f0f8" stroke="#3b5b7f" stroke-width="3"/>
+  <rect x="315" y="222" width="150" height="14" rx="4" fill="#3b5b7f"/>
+  <rect x="342" y="152" width="96" height="58" fill="#fff" stroke="#9fb3c8"/>
+  <!-- DECT control link (top, dashed orange) -->
+  <path d="M130 150 Q 240 60 330 150" fill="none" stroke="#e76f51" stroke-width="4" stroke-dasharray="10 8"/>
+  <rect x="160" y="62" width="160" height="30" rx="15" fill="#e76f51"/>
+  <text x="240" y="83" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">DECT-2020 NR</text>
+  <text x="240" y="118" font-size="12" fill="#e76f51" text-anchor="middle">secure discovery &amp; pairing</text>
+  <!-- Wi-Fi data link (bottom, solid blue) -->
+  <path d="M130 240 Q 240 320 330 236" fill="none" stroke="#1772d0" stroke-width="7"/>
+  <rect x="190" y="292" width="100" height="30" rx="15" fill="#1772d0"/>
+  <text x="240" y="313" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">Wi-Fi</text>
+  <text x="240" y="268" font-size="12" fill="#1772d0" text-anchor="middle">high-speed data + WireGuard</text>
+  <!-- labels -->
+  <text x="85" y="300" font-size="13" fill="#3b5b7f" text-anchor="middle">nRF9161 device</text>
+  <text x="390" y="262" font-size="13" fill="#3b5b7f" text-anchor="middle">peer device</text>
+</svg>

@@ -1,1 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160"><rect width="160" height="160" rx="8" fill="#2a9d8f"/><text x="80" y="78" font-family="Lato,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">O-RAN</text><text x="80" y="100" font-family="Lato,Helvetica,sans-serif" font-size="13" fill="#e8eef4" text-anchor="middle">agentic AI</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" font-family="Lato,Helvetica,sans-serif">
+  <rect width="480" height="360" fill="#fff"/>
+  <!-- agent -->
+  <rect x="165" y="20" width="150" height="56" rx="12" fill="#2a9d8f"/>
+  <text x="240" y="44" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">AppWeaver</text>
+  <text x="240" y="64" font-size="12" fill="#e6fffb" text-anchor="middle">LLM agent: discover · compose</text>
+  <!-- intent -->
+  <rect x="20" y="30" width="110" height="36" rx="18" fill="#fff" stroke="#2a9d8f" stroke-width="2"/>
+  <text x="75" y="53" font-size="12" fill="#2a9d8f" text-anchor="middle">operator intent</text>
+  <path d="M130 48 L165 48" stroke="#2a9d8f" stroke-width="3" marker-end="url(#m)"/>
+  <defs><marker id="m" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#2a9d8f"/></marker></defs>
+  <!-- app catalog -->
+  <text x="240" y="108" font-size="12" fill="#555" text-anchor="middle">xApp / rApp catalog</text>
+  <g font-size="11" fill="#fff" text-anchor="middle">
+    <rect x="30" y="118" width="80" height="30" rx="6" fill="#9fb3c8"/><text x="70" y="138">KPM</text>
+    <rect x="130" y="118" width="80" height="30" rx="6" fill="#1772d0"/><text x="170" y="138">Slicing</text>
+    <rect x="230" y="118" width="80" height="30" rx="6" fill="#1772d0"/><text x="270" y="138">Scheduler</text>
+    <rect x="330" y="118" width="80" height="30" rx="6" fill="#9fb3c8"/><text x="370" y="138">Anomaly</text>
+  </g>
+  <!-- composed workflow -->
+  <text x="240" y="190" font-size="12" fill="#555" text-anchor="middle">composed workflow</text>
+  <g font-size="11" fill="#fff" text-anchor="middle">
+    <rect x="80" y="200" width="80" height="30" rx="6" fill="#1772d0"/><text x="120" y="220">Slicing</text>
+    <path d="M160 215 L200 215" stroke="#1772d0" stroke-width="3" marker-end="url(#m2)"/>
+    <rect x="200" y="200" width="80" height="30" rx="6" fill="#1772d0"/><text x="240" y="220">Scheduler</text>
+    <path d="M280 215 L320 215" stroke="#1772d0" stroke-width="3" marker-end="url(#m2)"/>
+    <rect x="320" y="200" width="80" height="30" rx="6" fill="#1772d0"/><text x="360" y="220">KPM</text>
+  </g>
+  <defs><marker id="m2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#1772d0"/></marker></defs>
+  <path d="M170 148 L120 200 M270 148 L240 200 M70 148 L360 200" stroke="#bbb" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+  <!-- O-RAN layers -->
+  <rect x="40" y="262" width="400" height="34" rx="8" fill="#f1f5f9" stroke="#9fb3c8"/>
+  <text x="240" y="284" font-size="13" fill="#3b5b7f" text-anchor="middle">Near-RT RIC · Non-RT RIC · O-CU / O-DU · E2 / A1 / O1</text>
+  <text x="240" y="330" font-size="12" fill="#777" text-anchor="middle">OAI FlexRIC · srsRAN testbed</text>
+</svg>
