@@ -24,3 +24,5 @@ summary { cursor: pointer; }
   .pub-row td { display: block; width: 100% !important; box-sizing: border-box; }
   .pub-row td:first-child { padding-bottom: 0 !important; }
 }
+ol { padding-left: 1.4em; }
+ol li { margin-bottom: 6px; }
